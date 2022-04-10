@@ -126,15 +126,18 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
         print(new_instance.id)
         if len(args2) >= 2:
-            dic = {}
             for i in range(1, len(args2)):
                 lis = args2[i].split("=")
-                lis[1] = lis[1].strip("\"")
-                lis[1] = lis[1].replace("_", " ")
-                lis[1] = lis[1].replace('"', '\\"')
-                dic[lis[0]] = lis[1]
-            self.do_update(
-                args2[0] + " " + str(new_instance.id) + " " + str(dic))
+                if lis[1][0] == "\"":
+                    lis[1] = str(lis[1])
+                    lis[1] = lis[1].strip("\"")
+                    lis[1] = lis[1].replace("_", " ")
+                elif "." in lis[1]:
+                    lis[1] = float(lis[1])
+                else:
+                    lis[1] = int(lis[1])
+                #lis[1] = lis[1].replace('"', '\\"')
+                setattr( new_instance, lis[0], lis[1])
         storage.save()
 
     def help_create(self):
@@ -219,10 +222,12 @@ class HBNBCommand(cmd.Cmd):
                 return
             for k, v in storage._FileStorage__objects.items():
                 if k.split('.')[0] == args:
-                    print_list.append(str(v))
+                    b = str(v).strip("\"")
+                    print_list.append(b)
         else:
             for k, v in storage._FileStorage__objects.items():
-                print_list.append(str(v))
+                b = str(v).strip("\"")
+                print_list.append(b)
 
         print(print_list)
 
