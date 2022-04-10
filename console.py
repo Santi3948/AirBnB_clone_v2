@@ -125,11 +125,13 @@ class HBNBCommand(cmd.Cmd):
         new_instance = HBNBCommand.classes[args2[0]]()
         storage.save()
         print(new_instance.id)
-        if len(args2) == 2:
+        if len(args2) >= 2:
             dic = {}
             for i in range(1, len(args2)):
                 lis = args2[i].split("=")
                 lis[1] = lis[1].strip("\"")
+                lis[1] = lis[1].replace("_", " ")
+                lis[1] = lis[1].replace('"', '\"')
                 dic[lis[0]] = lis[1]
             self.do_update(
                 args2[0] + " " + str(new_instance.id) + " " + str(dic))
