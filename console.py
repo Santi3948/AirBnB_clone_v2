@@ -131,7 +131,7 @@ class HBNBCommand(cmd.Cmd):
                 lis = args2[i].split("=")
                 lis[1] = lis[1].strip("\"")
                 lis[1] = lis[1].replace("_", " ")
-                lis[1] = lis[1].replace('"', '\"')
+                lis[1] = lis[1].replace('"', '\\"')
                 dic[lis[0]] = lis[1]
             self.do_update(
                 args2[0] + " " + str(new_instance.id) + " " + str(dic))
