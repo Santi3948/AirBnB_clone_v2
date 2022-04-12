@@ -2,7 +2,7 @@
 """ Console Module """
 import cmd
 import sys
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
 from models.__init__ import storage
 from models.user import User
 from models.place import Place
@@ -10,6 +10,7 @@ from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.review import Review
+from os import getenv
 
 
 class HBNBCommand(cmd.Cmd):
@@ -213,7 +214,14 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, args):
         """ Shows all objects, or all objects of a class"""
         print_list = []
-
+        if getenv("HBNB_TYPE_STORAGE") == "db":
+            print (f"all de DB -----   {args}")
+            for k, v in storage.all(args).items():
+                print_list.append("{k}: {v}")
+            print(print_list)
+            return;
+                
+        print("adwfegtsrshdcg")
         if args:
             args = args.split(' ')[0]  # remove possible trailing args
             if args not in HBNBCommand.classes:

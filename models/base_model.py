@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """This module defines a base class for all models in our hbnb clone"""
 import uuid
-from datetime import datetime
-from sqlalchemy import Column, String
+from sqlalchemy import Column, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
+from datetime import datetime
 
 Base = declarative_base()
 
@@ -18,8 +18,8 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
         else:
-            for key in kwargs.keys():
-                setattr(self, key, kwargs[key])
+            # for key in kwargs.keys():
+            # setattr(self, key, kwargs[key])
             kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'],
                                                      '%Y-%m-%dT%H:%M:%S.%f')
             kwargs['created_at'] = datetime.strptime(kwargs['created_at'],
@@ -28,8 +28,8 @@ class BaseModel:
             self.__dict__.update(kwargs)
 
     id = Column(String(60), primary_key=True)
-    created_at = Column(datetime, default=datetime.utcnow(), nullable=False)
-    updated_at = Column(datetime, default=datetime.utcnow(), nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow(), nullable=False)
+    updated_at = Column(DateTime, default=datetime.utcnow(), nullable=False)
 
     def __str__(self):
         """Returns a string representation of the instance"""

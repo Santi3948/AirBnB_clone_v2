@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+export HBNB_ENV="dev";
+export HBNB_MYSQL_USER="root";
+export HBNB_MYSQL_PWD="root";
+export HBNB_MYSQL_HOST="localhost";
+export HBNB_MYSQL_DB="hbnb_db";
+export HBNB_TYPE_STORAGE="db";
