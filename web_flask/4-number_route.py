@@ -23,6 +23,7 @@ def hello3(text):
     return 'C %s' % text.replace("_", " ")
 
 
+@app.route('/python')
 @app.route('/python/<text>')
 def hello4(text="is cool"):
     """Hello Python"""
