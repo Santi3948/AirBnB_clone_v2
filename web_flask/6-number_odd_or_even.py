@@ -47,9 +47,9 @@ def hello6(n):
 def hello7(n):
     """Hello n again!!!"""
     if n % 2 == 0:
-        return render_template('5-number.html', var=n, evenodd="even")
+        return render_template('6-number_odd_or_even.html', var=n, evenodd="even")
     else:
-        return render_template('5-number.html', var=n, evenodd="odd")
+        return render_template('6-number_odd_or_even.html', var=n, evenodd="odd")
 
 
 if __name__ == "__main__":
