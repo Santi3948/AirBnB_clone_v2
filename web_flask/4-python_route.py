@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 """hbnb module"""
 from flask import Flask, escape, request
 
@@ -22,6 +21,12 @@ def hello2():
 def hello3(text):
     """Hello var"""
     return 'C %s' % text.replace("_", " ")
+
+
+@app.route('/number/<int:n>')
+def hello4(n):
+    """Hello n"""
+    return '%d is a number' % n
 
 
 if __name__ == "__main__":
