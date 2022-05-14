@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """hbnb module"""
 from flask import Flask, escape, request
 
@@ -32,7 +33,7 @@ def hello4(text="is cool"):
 
 @app.route('/number/<int:n>')
 def hello5(n):
-    """Hello n"""
+    """Hello n!!!"""
     return '%d is a number' % n
 
 
